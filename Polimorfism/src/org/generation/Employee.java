@@ -97,18 +97,19 @@ public class Employee {
 	
 	//Calcula tiempo restante a aprtir de edad de retiro
 	public int timeToRetirement() {
-        int retirementAge = 65;
-        return retirementAge - age;
+        int timeByAge = 60 - age;
+        int timeByYears = 40 - yearsWorked;
+        return Math.min(timeByAge, timeByYears);
     }//timeToRetirement
 	
+	//Vacaciones restantes
 	public int vacationTimeLeft() {
-        int totalVacationDays = yearsWorked * 30;
-        return totalVacationDays - vacationDaysTaken;
-    }//vacationTimeLeft
+        return (daysWorked / 360) * (30 - vacationDaysTaken);
+    }//vacationTimeLeft 
 	
 	//Bono anual del empleado
 	public double calculateBonus() {
-        return salary * 0.10;
+        return 2.2 * salary;
     }//calculateBonus
 
 	@Override
